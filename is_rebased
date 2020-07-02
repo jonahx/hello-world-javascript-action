@@ -1,3 +1,3 @@
 #! /usr/bin/env bash
 
-! [[ $(git log --oneline master...HEAD --merges) ]]
+! [[ $(git log --oneline master...${GITHUB_SHA} --merges) ]]
