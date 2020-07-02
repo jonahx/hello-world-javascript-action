@@ -12,5 +12,6 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
+    - run: git checkout HEAD
     - name: Is Rebased on master?
       run: ./is_rebased
