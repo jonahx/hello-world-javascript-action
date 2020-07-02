@@ -21,3 +21,4 @@ try {
 } catch (error) {
   core.setFailed("The GH action itself failed unexpectedly: " + error.message);
 }
+
