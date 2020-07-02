@@ -8,5 +8,7 @@ jobs:
     name: A job to say hello
 
     steps:
+    - name: Check out code
+      uses: actions/checkout@v2
     - name: Is Rebased on master?
       run: ./is_rebased
