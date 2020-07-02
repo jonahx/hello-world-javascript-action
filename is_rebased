@@ -1,3 +1,5 @@
 #! /usr/bin/env bash
 
-! [[ $(git log --oneline origin/master...HEAD --merges) ]]
+[[ -z $(git log --oneline origin/master...HEAD --merges) ]] &&
+  [[ "$(git merge-base origin/master HEAD)" = \
+     "$(git rev-parse origin/master)" ]]
