@@ -8,7 +8,10 @@ const checkoutCode = async () => {
 
     const options = { env: process.env, stdio: 'inherit'}
 
-    cp.execSync('node ./checkout/index.js', options);
+    const scriptPath = path.join(
+      __dirname, '../checkout/index.js'
+    )
+    cp.execSync(`node ${scriptPath}`, options);
 
     // if (exitCode != 0) {
     //   core.setFailed(`Our checkout failed: ${exitCode}`)
