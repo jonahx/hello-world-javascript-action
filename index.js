@@ -1,6 +1,7 @@
 const core = require('@actions/core')
 const exec = require('@actions/exec')
 const cp = require('child_process')
+const path = require('path')
 
 const checkoutCode = async () => {
   try {
