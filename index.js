@@ -8,10 +8,10 @@ const checkoutCode = async () => {
     const exitCode = await exec.exec('node ./checkout/index.js')
 
     if (exitCode != 0) {
-      core.setFailed(failureMsg)
+      core.setFailed(`Our checkout failed: ${exitCode}`)
     }
   } catch (error) {
-    core.setFailed(failureMsg)
+    core.setFailed(error)
   }
 }
 
