@@ -1,15 +1,21 @@
 const core = require('@actions/core')
 const exec = require('@actions/exec')
+const cp = require('child_process')
 
 const checkoutCode = async () => {
   try {
     core.exportVariable('INPUT_FETCH-DEPTH', '0')
 
-    const exitCode = await exec.exec('node ./checkout/index.js')
+    const options: cp.ExecSyncOptions = {
+      env: process.env,
+      stdio: 'inherit',
+    };
 
-    if (exitCode != 0) {
-      core.setFailed(`Our checkout failed: ${exitCode}`)
-    }
+    cp.execSync('node ./checkout/index.js', options);
+
+    // if (exitCode != 0) {
+    //   core.setFailed(`Our checkout failed: ${exitCode}`)
+    // }
   } catch (error) {
     core.setFailed(error)
   }
