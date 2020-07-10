@@ -9,6 +9,6 @@ jobs:
 
     steps:
     - name: Check out code
-      uses: actions/checkout@v12
+      uses: actions/checkout@v2
     - name: Is Rebased on master?
-      uses: jonahx/hello-world-javascript-action@v11
+      uses: jonahx/hello-world-javascript-action@v13
