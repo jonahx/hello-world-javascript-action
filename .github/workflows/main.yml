@@ -9,4 +9,4 @@ jobs:
 
     steps:
     - name: Is Rebased on master?
-      uses: jonahx/hello-world-javascript-action@v17
+      uses: jonahx/hello-world-javascript-action@v18

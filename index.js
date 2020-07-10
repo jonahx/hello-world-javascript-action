@@ -6,10 +6,7 @@ const checkoutCode = async () => {
   try {
     core.exportVariable('INPUT_FETCH-DEPTH', '0')
 
-    const options: cp.ExecSyncOptions = {
-      env: process.env,
-      stdio: 'inherit',
-    };
+    const options = { env: process.env, stdio: 'inherit'}
 
     cp.execSync('node ./checkout/index.js', options);
 
