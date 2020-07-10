@@ -1,12 +1,25 @@
 const core = require('@actions/core')
-// const github = require('@actions/github')
 const exec = require('@actions/exec')
 
+const checkoutCode = async () => {
+  try {
+    core.exportVariable('INPUT_FETCH-DEPTH', '0')
 
-const failureMsg = "Pull requests must be rebased on master, and cannot " +
-  "contain any merge commits."
+    const exitCode = await exec.exec('node ./checkout/index.js')
 
-const run = async () => {
+    if (exitCode != 0) {
+      core.setFailed(failureMsg)
+    }
+  } catch (error) {
+    core.setFailed(failureMsg)
+  }
+}
+
+
+const verifyRebase = async () => {
+  const failureMsg = "Pull requests must be rebased on master, and cannot " +
+    "contain any merge commits."
+
   try {
     const exitCode = await exec.exec('./is_rebased')
 
@@ -18,4 +31,5 @@ const run = async () => {
   }
 }
 
-run()
+checkoutCode()
+verifyRebase()
